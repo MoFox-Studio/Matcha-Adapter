@@ -1,0 +1,9 @@
+urllib3
+websockets
+aiohttp
+asyncio
+requests
+maim_message
+pillow
+tomlkit
+structlog
