@@ -10,7 +10,7 @@ from .logger import get_logger
 from .response_pool import get_response
 
 from PIL import Image
-from typing import Union, List, Tuple, Optional
+from typing import Union, Optional
 
 
 logger = get_logger("utils")
