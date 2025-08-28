@@ -6,9 +6,9 @@ host = "localhost"      # Matcha设定的主机地址
 port = 8095             # Matcha设定的端口
 heartbeat_interval = 30 # 与Matcha设置的心跳相同（按秒计）
 
-[maibot_server] # 连接麦麦的ws服务设置
-host = "localhost" # 麦麦在.env文件中设置的主机地址，即HOST字段
-port = 8000        # 麦麦在.env文件中设置的端口，即PORT字段
+[maibot_server] # 连接MoFox-Bot的ws服务设置
+host = "localhost" # MoFox-Bot在.env文件中设置的主机地址，即HOST字段
+port = 8000        # MoFox-Bot在.env文件中设置的端口，即PORT字段
 
 [debug]
 date_style = "m-d H:i:s" # 日期格式

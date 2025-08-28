@@ -6,7 +6,7 @@ logger = get_logger("message_sending")
 
 class MessageSending:
     """
-    负责把消息发送到麦麦
+    负责把消息发送到MoFox-Bot
     """
 
     maibot_router: Router = None
