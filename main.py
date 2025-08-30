@@ -12,6 +12,14 @@ from src.config import global_config
 from src.mmc_com_layer import mmc_start_com, mmc_stop_com, router
 from src.response_pool import put_response, check_timeout_response
 
+# 尝试导入UI日志适配器（最小侵入方式）
+try:
+    import ui_log_adapter  # 自动设置UI日志传输
+    print("[Matcha-Adapter] UI日志适配器导入成功")
+except ImportError as e:
+    print(f"[Matcha-Adapter] UI日志适配器导入失败: {e}")
+    pass
+
 message_queue = asyncio.Queue()
 logger = get_logger("main")
 
@@ -46,12 +54,18 @@ async def message_process():
 
 
 async def main():
+    logger.info("正在启动 Matcha-Adapter...")
+    
     message_send_instance.maibot_router = router
+    
+    logger.info("启动各项服务...")
+    
     _ = await asyncio.gather(matcha_server(), mmc_start_com(), message_process(), check_timeout_response())
 
 
 async def matcha_server():
     logger.info("正在启动adapter...")
+    
     async with Server.serve(message_recv, global_config.matcha_server.host, global_config.matcha_server.port, max_size=2**26) as server:
         logger.info(
             f"Adapter已启动，监听地址: ws://{global_config.matcha_server.host}:{global_config.matcha_server.port}"
